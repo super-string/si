@@ -1,0 +1,31 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.6.33815.320
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "si", "si\si.csproj", "{C4B54F5F-6B7B-41E0-BB1F-758AAC678ACC}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kvi", "ViLikeRitchTextBox\kvi.csproj", "{3B9101C6-B6B9-429E-89A7-CF88AD141F05}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{C4B54F5F-6B7B-41E0-BB1F-758AAC678ACC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4B54F5F-6B7B-41E0-BB1F-758AAC678ACC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4B54F5F-6B7B-41E0-BB1F-758AAC678ACC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4B54F5F-6B7B-41E0-BB1F-758AAC678ACC}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3B9101C6-B6B9-429E-89A7-CF88AD141F05}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3B9101C6-B6B9-429E-89A7-CF88AD141F05}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3B9101C6-B6B9-429E-89A7-CF88AD141F05}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3B9101C6-B6B9-429E-89A7-CF88AD141F05}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {B5DE4CF8-E9A3-48D4-AD6E-291DC0F24A3B}
+	EndGlobalSection
+EndGlobal
