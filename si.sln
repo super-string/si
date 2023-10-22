@@ -5,7 +5,7 @@ VisualStudioVersion = 17.6.33815.320
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "si", "si\si.csproj", "{C4B54F5F-6B7B-41E0-BB1F-758AAC678ACC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kvi", "ViLikeRitchTextBox\kvi.csproj", "{3B9101C6-B6B9-429E-89A7-CF88AD141F05}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "kvi", "kvi\kvi.csproj", "{3B9101C6-B6B9-429E-89A7-CF88AD141F05}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
