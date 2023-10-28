@@ -1,7 +1,14 @@
 ﻿
 namespace kvi {
 	public class KviTextBox :RichTextBox {
-		KviCentral central;
+		private KviCentral central;
+		public void AddOverEscEvent(NoArgEventHandler e){
+			central.ExtIF.OverEscapeHandler += e;
+		}
+		public void RemoveOverEscEvent(NoArgEventHandler e){
+			central.ExtIF.OverEscapeHandler -= e;
+		}
+
 		public KviTextBox() :base(){
 			central = new KviCentral();
 		}

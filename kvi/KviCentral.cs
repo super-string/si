@@ -1,9 +1,11 @@
 ﻿namespace kvi {
 	internal class KviCentral {
 		internal EditModeCtrl Mode { get; private set; }
+		public  ExternalIF ExtIF{ get; private set; }
 
 		internal KviCentral(){
 			Mode = new EditModeCtrl();
+			ExtIF = new ExternalIF();
 		}
 
 		internal bool RecieveKey(Keys _key, KviTextBox _target){
@@ -44,6 +46,25 @@
 				case EditMode.Insert:
 					break;
 				case EditMode.Select:
+					break;
+				default:
+					break;
+			}
+		}
+		private void event_esc(KviTextBox _target){
+			switch(Mode.Mode) {
+				case EditMode.Normal:
+					ExtIF.OverEsc();
+					break;
+				case EditMode.Insert:
+					if(Mode.IntoNormal()){ 
+						_target.SelectionLength = 0;
+					}
+					break;
+				case EditMode.Select:
+					if(Mode.IntoNormal()){ 
+						_target.SelectionLength = 0;
+					}
 					break;
 				default:
 					break;
