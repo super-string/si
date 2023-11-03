@@ -1,0 +1,13 @@
+using kvi;
+
+namespace Oex {
+	internal class FileItem {
+		KviTextBox Display;
+		FileItemType Type;
+	}
+
+	internal enum FileItemType{
+		File,
+		Directry,
+	}
+}
