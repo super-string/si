@@ -8,9 +8,7 @@ namespace Oex {
 			displayData = new DirectoryDisplayData();
 			Mode = new EditModeCtrl();
 
-			_target.refreshDirectoryPathDisplay(displayData.DirectoryData.GetCurrentPath());
-			displayData.DirectoryData.RefleshList();
-			_target.refreshItemDisplay(displayData.GetDisplayFileNameList(_target.displayNum));
+			refreshDirectory_DisplayAndData(_target);
 		}
 
 		internal bool RecieveKey(Keys _key, OexPanel _target){
@@ -43,6 +41,13 @@ namespace Oex {
 				default:
 					break;
 			}
+			return true;
+		}
+
+		private bool refreshDirectory_DisplayAndData(OexPanel _target){
+			_target.refreshDirectoryPathDisplay(displayData.DirectoryData.GetCurrentPath());
+			displayData.DirectoryData.RefleshList();
+			_target.refreshItemDisplay(displayData.GetDisplayFileNameList(_target.displayNum));
 			return true;
 		}
 
@@ -94,6 +99,8 @@ namespace Oex {
 		private void event_l(OexPanel _target) {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
+					displayData.DirectoryData.MoveDownCurrentPathTo(displayData.DirectoryData.GetItemName(displayData.SelectStart));
+					refreshDirectory_DisplayAndData(_target);
 					break;
 				case EditMode.Insert:
 					break;
@@ -136,6 +143,8 @@ namespace Oex {
 		private void event_h(OexPanel _target) {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
+					displayData.DirectoryData.MoveUpCurrentPath();
+					refreshDirectory_DisplayAndData(_target);
 					break;
 				case EditMode.Insert:
 					break;

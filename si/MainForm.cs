@@ -5,7 +5,7 @@ namespace si {
 	public partial class MainForm :Form {
 		public MainForm() {
 			InitializeComponent();
-			oex = new OexPanel(this.ClientSize,new Point(1, 1));
+			oex = new OexPanel(this.ClientSize, new Point(1, 1));
 		}
 
 

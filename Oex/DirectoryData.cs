@@ -1,26 +1,23 @@
 ﻿namespace Oex {
 	internal class DirectoryData {
-		protected string currentPath;
 		protected List<string> fileList;
 		protected List<string> directoryList;
 
 		internal DirectoryData(){
-			currentPath = Application.ExecutablePath;
-			currentPath = Path.GetDirectoryName(currentPath) ?? @"c:\";
+			System.Environment.CurrentDirectory = Path.GetDirectoryName(Application.ExecutablePath) ?? @"c:\";
 			fileList = new List<string>();
 			directoryList = new List<string>();
 
 		}
 		internal DirectoryData(string _path){
-			currentPath = "No directory";
-			SetCurrentPathText(_path);
+			MoveCurrentPath(_path);
 			fileList = new List<string>();
 			directoryList = new List<string>();
 		}
 
 		//情報提供IF
 		internal string GetCurrentPath(){
-			return currentPath; 
+			return System.Environment.CurrentDirectory; 
 		}
 		internal int GetItemCount(){
 			return directoryList.Count + fileList.Count;
@@ -50,25 +47,51 @@
 
 		//情報更新IF
 		internal bool RefleshList(){
-			fileList = Directory.GetFiles(currentPath).ToList();
-			directoryList = Directory.GetDirectories(currentPath).ToList();
-			for(int i = 0; i < fileList.Count; i++){
-				fileList[i] = Path.GetFileName(fileList[i]);
+			fileList = Directory.GetFiles(System.Environment.CurrentDirectory).ToList();
+			directoryList = Directory.GetDirectories(System.Environment.CurrentDirectory).ToList();
+
+			if(fileList.Count != 0){ 
+				for(int i = 0; i < fileList.Count; i++){
+					fileList[i] = Path.GetFileName(fileList[i]);
+				}
 			}
-			for(int i = 0; i < directoryList.Count; i++){
-				fileList[i] = Path.GetFileName(directoryList[i]);
+			if(directoryList.Count != 0) {
+				for(int i = 0; i < directoryList.Count; i++) {
+					directoryList[i] = Path.GetFileName(directoryList[i]);
+				}
 			}
 			return true;
 		}
 
-		internal bool SetCurrentPathText(string _path){
+		internal bool MoveCurrentPath(string _path){
+			if(_path == null)
+				return false;
+			if(_path == "")
+				return false;
+
 			if(Directory.Exists(_path)) {
-				currentPath = _path;
+				System.Environment.CurrentDirectory = _path;
 				return true;
 			}
 			return false;
 		}
+		internal bool MoveUpCurrentPath(){
+			System.Environment.CurrentDirectory = Path.GetFullPath(@"..\", System.Environment.CurrentDirectory);
+			return true;
+		}
+		internal bool MoveDownCurrentPathTo(string _target) {
+			string nextPath;
+			try {
+				nextPath = Path.GetFullPath(@".\" + _target + @"\", System.Environment.CurrentDirectory);
 
+				if(Directory.Exists(nextPath)) {
+					System.Environment.CurrentDirectory = nextPath;
+				}
+			}
+			catch(ArgumentException){
+			}
+			return true;
+		}
 		//情報更新IF---
 	}
 }

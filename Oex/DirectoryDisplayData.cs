@@ -33,9 +33,6 @@ namespace Oex {
 		internal List<string> GetDisplayFileNameList(int _displayNum){
 			List<string> ret = new List<string>();
 			for(int i = displayStart; i < displayStart + _displayNum; i++){
-				if(DirectoryData.GetItemName(i) == ""){
-					break;
-				}
 				ret.Add(DirectoryData.GetItemName(i));
 			}
 			return ret;
