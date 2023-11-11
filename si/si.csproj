@@ -9,7 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <ProjectReference Include="..\kvi\kvi.csproj" />
+    <ProjectReference Include="..\Oed\Oed.csproj" />
     <ProjectReference Include="..\Oex\Oex.csproj" />
   </ItemGroup>
 

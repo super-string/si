@@ -70,7 +70,7 @@ namespace Oex {
 		private void event_Enter(OexPanel _target){
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					string filePath = displayData.DirectoryData.GetCurrentPath() + displayData.DirectoryData.GetItemName(displayData.SelectStart);
+					string filePath = displayData.DirectoryData.GetCurrentPath() + @"\" + displayData.DirectoryData.GetItemName(displayData.SelectStart);
 					if(File.Exists(filePath)) {
 						_target.ExtIF.FileOpen(filePath);
 					}
