@@ -11,6 +11,17 @@ namespace Oex {
 			ktb.Name = _name;
 			Type = _type;
 			ktb.Multiline = false;
+			ktb.BorderStyle = BorderStyle.None;
+			ktb.ExtIF.OverEscapeHandler += ExtIF_OverEscapeHandler;
+			ktb.GotFocus += Ktb_GotFocusHandler;
+		}
+
+		private void Ktb_GotFocusHandler(object? sender, EventArgs e) {
+			ktb.Parent.Select();
+		}
+
+		private void ExtIF_OverEscapeHandler() {
+			ktb.Parent.Select();
 		}
 
 		/// <summary>
@@ -29,10 +40,5 @@ namespace Oex {
 			ktb.Height = _size.Height;
 			return true;
 		}
-	}
-
-	internal enum FileItemType{
-		File,
-		Directry,
 	}
 }

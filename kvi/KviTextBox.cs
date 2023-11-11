@@ -2,15 +2,17 @@
 namespace kvi {
 	public class KviTextBox :RichTextBox {
 		private KviCentral central;
+		public  ExternalIF ExtIF{ get; private set; }
 		public void AddOverEscEvent(NoArgEventHandler e){
-			central.ExtIF.OverEscapeHandler += e;
+			ExtIF.OverEscapeHandler += e;
 		}
 		public void RemoveOverEscEvent(NoArgEventHandler e){
-			central.ExtIF.OverEscapeHandler -= e;
+			ExtIF.OverEscapeHandler -= e;
 		}
 
 		public KviTextBox() :base(){
 			central = new KviCentral();
+			ExtIF = new ExternalIF();
 		}
 
 		protected override void OnGotFocus(EventArgs e) {
@@ -61,6 +63,5 @@ namespace kvi {
 			internal int GetSelectionEnd(){
 				return SelectionStart + SelectionLength;
 			}
-
 	}
 }

@@ -1,15 +1,22 @@
-﻿namespace kvi {
-	internal class KviCentral {
+﻿
+namespace Oex {
+	internal class OexCentral {
 		internal EditModeCtrl Mode { get; private set; }
+		private DirectoryDisplayData displayData;
 
-		internal KviCentral(){
+		internal OexCentral(OexPanel _target){
+			displayData = new DirectoryDisplayData();
 			Mode = new EditModeCtrl();
+
+			_target.refreshDirectoryPathDisplay(displayData.DirectoryData.GetCurrentPath());
+			displayData.DirectoryData.RefleshList();
+			_target.refreshItemDisplay(displayData.GetDisplayFileNameList(_target.displayNum));
 		}
 
-		internal bool RecieveKey(Keys _key, KviTextBox _target){
+		internal bool RecieveKey(Keys _key, OexPanel _target){
 			if(_key == (Keys.Control | Keys.OemOpenBrackets)){
-				if(Mode.IntoNormal()){ 
-					_target.SelectionLength = 0;
+				if(Mode.IntoNormal()){
+					_target.PointCursor(_target.SelectionStart);
 				}
 				return true;
 			}
@@ -39,7 +46,7 @@
 			return true;
 		}
 
-		private void event_Ctrl_w(KviTextBox _target){
+		private void event_Ctrl_w(OexPanel _target){
 			switch(Mode.Mode) {
 				case EditMode.Normal:
 					_target.ExtIF.OverEsc();
@@ -52,7 +59,7 @@
 					break;
 			}
 		}
-		private void event_i(KviTextBox _target){
+		private void event_i(OexPanel _target){
 			switch(Mode.Mode) {
 				case EditMode.Normal:
 					Mode.IntoInsert();
@@ -65,19 +72,18 @@
 					break;
 			}
 		}
-		private void event_esc(KviTextBox _target){
+		private void event_esc(OexPanel _target){
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.ExtIF.OverEsc();
 					break;
 				case EditMode.Insert:
 					if(Mode.IntoNormal()){ 
-						_target.SelectionLength = 0;
+						_target.PointCursor(_target.SelectionStart);
 					}
 					break;
 				case EditMode.Select:
 					if(Mode.IntoNormal()){ 
-						_target.SelectionLength = 0;
+						_target.PointCursor(_target.SelectionStart);
 					}
 					break;
 				default:
@@ -85,10 +91,9 @@
 			}
 		}
 
-		private void event_l(KviTextBox _target) {
+		private void event_l(OexPanel _target) {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.PointCursor(CursorMoving.MoveHolizontal(_target.SelectionStart, 1, _target.Text));
 					break;
 				case EditMode.Insert:
 					break;
@@ -98,10 +103,12 @@
 					break;
 			}
 		}
-		private void event_j(KviTextBox _target) {
+		private void event_j(OexPanel _target) {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.PointCursor(CursorMoving.MoveVertical(_target.SelectionStart, +1, _target.Text));
+					int dst = CursorMoving.MoveVertical(1, displayData);
+					displayData.SelectStart = dst;
+					_target.PointCursor(dst);
 					break;
 				case EditMode.Insert:
 					break;
@@ -111,10 +118,12 @@
 					break;
 			}
 		}
-		private void event_k(KviTextBox _target) {
+		private void event_k(OexPanel _target) {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.PointCursor(CursorMoving.MoveVertical(_target.SelectionStart, -1, _target.Text));
+					int dst = CursorMoving.MoveVertical(-1, displayData);
+					displayData.SelectStart = dst;
+					_target.PointCursor(dst);
 					break;
 				case EditMode.Insert:
 					break;
@@ -124,10 +133,9 @@
 					break;
 			}
 		}
-		private void event_h(KviTextBox _target) {
+		private void event_h(OexPanel _target) {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.PointCursor(CursorMoving.MoveHolizontal( _target.SelectionStart, -1, _target.Text));
 					break;
 				case EditMode.Insert:
 					break;
