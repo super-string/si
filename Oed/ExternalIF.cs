@@ -1,7 +1,7 @@
 ﻿namespace Oed {
 	public  class ExternalIF {
 		public event Action? OverEscapeHandler;
-		public event Action<string>? FileCloseHandler;
+		public event Action? FileCloseHandler;
 
 		internal void OverEsc(){
 			if(OverEscapeHandler != null){ 
@@ -9,9 +9,9 @@
 			}
 		}
 			
-		internal void FileClose(string _filePath){
+		internal void FileClose(){
 			if(FileCloseHandler != null){
-				FileCloseHandler(_filePath);
+				FileCloseHandler();
 			}
 		}
 	}

@@ -1,19 +1,17 @@
 ﻿
+using kvi;
+
 namespace Oed {
 	internal class OedCentral {
 		internal OedModeCtrl Mode { get; private set; }
+		internal CommandLogic command;
 
-		internal OedCentral(OedPanel _target){
+		internal OedCentral(){
 			Mode = new OedModeCtrl();
+			command = new CommandLogic();
 		}
 
 		internal bool RecieveKey(Keys _key, OedPanel _target){
-			if(_key == (Keys.Control | Keys.OemOpenBrackets)){
-				if(Mode.IntoText()){
-				}
-				return true;
-			}
-
 			switch(_key) {
 				case (Keys.Control | Keys.W):
 					event_Ctrl_w(_target);
@@ -42,6 +40,7 @@ namespace Oed {
 				case OedMode.Text:
 					break;
 				case OedMode.Command:
+					command.RecieveCommand(_target);
 					break;
 				default:
 					break;

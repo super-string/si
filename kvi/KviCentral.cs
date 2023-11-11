@@ -33,6 +33,12 @@
 				case Keys.I:
 					event_i(_target);
 					break;
+				case (Keys.Oem1):
+					event_Colon(_target);
+					break;
+				case (Keys.Enter):
+					event_Enter(_target);
+					break;
 				default:
 					break;
 			}
@@ -79,6 +85,33 @@
 					if(Mode.IntoNormal()){ 
 						_target.SelectionLength = 0;
 					}
+					break;
+				default:
+					break;
+			}
+		}
+		private void event_Colon(KviTextBox _target){
+			switch(Mode.Mode) {
+				case EditMode.Normal:
+					_target.ExtIF.PressColon();
+					break;
+				case EditMode.Insert:
+					break;
+				case EditMode.Select:
+					break;
+				default:
+					break;
+			}
+		}
+		private void event_Enter(KviTextBox _target) {
+			switch(Mode.Mode) {
+				case EditMode.Normal:
+					_target.ExtIF.PressEnter();
+					break;
+				case EditMode.Insert:
+					_target.ExtIF.PressEnter();
+					break;
+				case EditMode.Select:
 					break;
 				default:
 					break;

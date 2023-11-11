@@ -13,6 +13,7 @@ namespace si {
 			SetLocation(_location);
 
 			oex.ExtIF.FileOpenHandler += StartOed;
+			oed.ExtIF.FileCloseHandler += EndOed;
 			this.Controls.Add(oex);
 
 			GotFocus += gotFocusHandler;
@@ -36,13 +37,15 @@ namespace si {
 
 		//アプリ開始・終了
 		private void StartOed(string _path){
-			oed.ReadFile(_path);
+			oed.ReloadFile(_path);
 			this.Controls.Remove(oex);
 			this.Controls.Add(oed);
+			oed.Select();
 		}
 		private void EndOed(){
 			this.Controls.Remove(oed);
 			this.Controls.Add(oex);
+			oex.Select();
 		}
 		//アプリ開始・終了ーーー
 

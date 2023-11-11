@@ -3,7 +3,8 @@
 namespace kvi {
 	public class ExternalIF {
 		public event Action? OverEscapeHandler;
-		public event Action? ExtCommandHandler;
+		public event Action? PressColonHandler;
+		public event Action? PressEnterHandler;
 
 		internal void OverEsc(){
 			if(OverEscapeHandler != null){ 
@@ -11,9 +12,14 @@ namespace kvi {
 			}
 		}
 			
-		internal void ExtCommand(){
-			if(ExtCommandHandler != null){
-				ExtCommandHandler();
+		internal void PressColon(){
+			if(PressColonHandler != null){
+				PressColonHandler();
+			}
+		}
+		internal void PressEnter(){
+			if(PressEnterHandler != null){
+				PressEnterHandler();
 			}
 		}
 	}
