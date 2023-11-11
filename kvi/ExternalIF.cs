@@ -1,9 +1,9 @@
 ﻿using System.Runtime.CompilerServices;
 
 namespace kvi {
-	public delegate void NoArgEventHandler();
 	public class ExternalIF {
-		public event NoArgEventHandler? OverEscapeHandler;
+		public event Action? OverEscapeHandler;
+		public event Action? ExtCommandHandler;
 
 		internal void OverEsc(){
 			if(OverEscapeHandler != null){ 
@@ -11,5 +11,10 @@ namespace kvi {
 			}
 		}
 			
+		internal void ExtCommand(){
+			if(ExtCommandHandler != null){
+				ExtCommandHandler();
+			}
+		}
 	}
 }

@@ -3,10 +3,10 @@ namespace kvi {
 	public class KviTextBox :RichTextBox {
 		private KviCentral central;
 		public  ExternalIF ExtIF{ get; private set; }
-		public void AddOverEscEvent(NoArgEventHandler e){
+		public void AddOverEscEvent(Action e){
 			ExtIF.OverEscapeHandler += e;
 		}
-		public void RemoveOverEscEvent(NoArgEventHandler e){
+		public void RemoveOverEscEvent(Action e){
 			ExtIF.OverEscapeHandler -= e;
 		}
 

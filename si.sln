@@ -7,7 +7,9 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "si", "si\si.csproj", "{C4B5
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "kvi", "kvi\kvi.csproj", "{3B9101C6-B6B9-429E-89A7-CF88AD141F05}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oex", "Oex\Oex.csproj", "{38EBBA9B-2200-47B3-ABB0-DE2866B38C6B}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Oex", "Oex\Oex.csproj", "{38EBBA9B-2200-47B3-ABB0-DE2866B38C6B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Oed", "Oed\Oed.csproj", "{1F70F0FF-7770-4B45-A6C9-8BE72B3E3EC6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -27,6 +29,10 @@ Global
 		{38EBBA9B-2200-47B3-ABB0-DE2866B38C6B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{38EBBA9B-2200-47B3-ABB0-DE2866B38C6B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{38EBBA9B-2200-47B3-ABB0-DE2866B38C6B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1F70F0FF-7770-4B45-A6C9-8BE72B3E3EC6}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1F70F0FF-7770-4B45-A6C9-8BE72B3E3EC6}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1F70F0FF-7770-4B45-A6C9-8BE72B3E3EC6}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1F70F0FF-7770-4B45-A6C9-8BE72B3E3EC6}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
