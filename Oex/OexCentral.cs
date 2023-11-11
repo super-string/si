@@ -23,6 +23,9 @@ namespace Oex {
 				case (Keys.Control | Keys.W):
 					event_Ctrl_w(_target);
 					break;
+				case Keys.Enter:
+					event_Enter(_target);
+					break;
 				case Keys.H:
 					event_h(_target);
 					break;
@@ -55,6 +58,22 @@ namespace Oex {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
 					_target.ExtIF.OverEsc();
+					break;
+				case EditMode.Insert:
+					break;
+				case EditMode.Select:
+					break;
+				default:
+					break;
+			}
+		}
+		private void event_Enter(OexPanel _target){
+			switch(Mode.Mode) {
+				case EditMode.Normal:
+					string filePath = displayData.DirectoryData.GetCurrentPath() + displayData.DirectoryData.GetItemName(displayData.SelectStart);
+					if(File.Exists(filePath)) {
+						_target.ExtIF.FileOpen(filePath);
+					}
 					break;
 				case EditMode.Insert:
 					break;
@@ -100,6 +119,8 @@ namespace Oex {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
 					displayData.DirectoryData.MoveDownCurrentPathTo(displayData.DirectoryData.GetItemName(displayData.SelectStart));
+					displayData.SelectStart = 0;
+					_target.PointCursor(0);
 					refreshDirectory_DisplayAndData(_target);
 					break;
 				case EditMode.Insert:
@@ -144,6 +165,8 @@ namespace Oex {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
 					displayData.DirectoryData.MoveUpCurrentPath();
+					displayData.SelectStart = 0;
+					_target.PointCursor(0);
 					refreshDirectory_DisplayAndData(_target);
 					break;
 				case EditMode.Insert:
