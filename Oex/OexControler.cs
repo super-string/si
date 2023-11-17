@@ -57,7 +57,7 @@ namespace Oex {
 		private void event_Ctrl_w(OexPanel _target){
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.ExtIF.OverEsc();
+					_target.ExpandEvent.OverEsc();
 					break;
 				case EditMode.Insert:
 					break;
@@ -72,7 +72,7 @@ namespace Oex {
 				case EditMode.Normal:
 					string filePath = displayData.DirectoryData.GetCurrentPath() + @"\" + displayData.DirectoryData.GetItemName(displayData.SelectStart);
 					if(File.Exists(filePath)) {
-						_target.ExtIF.FileOpen(filePath);
+						_target.ExpandEvent.FileOpen(filePath);
 					}
 					break;
 				case EditMode.Insert:

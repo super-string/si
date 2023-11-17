@@ -1,36 +1,36 @@
 ﻿
 namespace kvi {
 	public class KviTextBox :RichTextBox {
-		private KviControler central;
-		public  ExternalIF ExtIF{ get; private set; }
+		private KviControler controler;
+		public  KviEvent ExpandEvent{ get; private set; }
 		public void AddOverEscEvent(Action e){
-			ExtIF.OverEscapeHandler += e;
+			ExpandEvent.OverEscapeHandler += e;
 		}
 		public void RemoveOverEscEvent(Action e){
-			ExtIF.OverEscapeHandler -= e;
+			ExpandEvent.OverEscapeHandler -= e;
 		}
 
 		public KviTextBox() :base(){
-			central = new KviControler();
-			ExtIF = new ExternalIF();
+			controler = new KviControler();
+			ExpandEvent = new KviEvent();
 		}
 
 		protected override void OnGotFocus(EventArgs e) {
 			base.OnGotFocus(e);
-			central.Mode.IntoNormal();
+			controler.Mode.IntoNormal();
 			ReadOnly = true;
 		}
 
 		protected override void OnKeyDown(KeyEventArgs e) {
 			base.OnKeyDown(e);
-			if(central.Mode.Mode != EditMode.Insert){
+			if(controler.Mode.Mode != EditMode.Insert){
 				ReadOnly = true;
 			}
 			else{
 				ReadOnly = false;
 			}
 
-			central.RecieveKey(e.KeyData, this);
+			controler.RecieveKey(e.KeyData, this);
 		}
 
 		//カーソル操作IF

@@ -48,7 +48,7 @@
 		private void event_Ctrl_w(KviTextBox _target){
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.ExtIF.OverEsc();
+					_target.ExpandEvent.OverEsc();
 					break;
 				case EditMode.Insert:
 					break;
@@ -74,7 +74,7 @@
 		private void event_esc(KviTextBox _target){
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.ExtIF.OverEsc();
+					_target.ExpandEvent.OverEsc();
 					break;
 				case EditMode.Insert:
 					if(Mode.IntoNormal()){ 
@@ -93,7 +93,7 @@
 		private void event_Colon(KviTextBox _target){
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.ExtIF.PressColon();
+					_target.ExpandEvent.PressColon();
 					break;
 				case EditMode.Insert:
 					break;
@@ -106,10 +106,10 @@
 		private void event_Enter(KviTextBox _target) {
 			switch(Mode.Mode) {
 				case EditMode.Normal:
-					_target.ExtIF.PressEnter();
+					_target.ExpandEvent.PressEnter();
 					break;
 				case EditMode.Insert:
-					_target.ExtIF.PressEnter();
+					_target.ExpandEvent.PressEnter();
 					break;
 				case EditMode.Select:
 					break;

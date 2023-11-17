@@ -3,7 +3,7 @@
 		internal bool RecieveCommand(OedPanel _target){
 			switch(_target.commandKtb.Text) {
 				case "q":
-					_target.ExtIF.FileClose();
+					_target.ExpandEvent.FileClose();
 					break;
 				default:
 					break;

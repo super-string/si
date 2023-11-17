@@ -1,15 +1,15 @@
 ﻿namespace Oex {
 	public class OexPanel :Control {
 		internal int displayNum;
-		private OexControler central;
-		public  ExternalIF ExtIF{ get; private set; }
+		private OexControler controler;
+		public  OexEvent ExpandEvent{ get; private set; }
 
 		RichTextBox currentPath;
 		List<FileDisplayTB> displayList;
 		Size displayListAreaSize;
 
 		public OexPanel(Size _size, Point _location){
-			ExtIF = new ExternalIF();
+			ExpandEvent = new OexEvent();
 			currentPath = new RichTextBox();
 			currentPath.BackColor = Color.Red;
 			currentPath.Text = "dummy path";
@@ -24,13 +24,13 @@
 			this.SetLocation(_location);
 
 
-			central = new OexControler(this);
+			controler = new OexControler(this);
 			PointCursor(0);
 		}
 
 		protected override void OnKeyDown(KeyEventArgs e){
 			base.OnKeyDown(e);
-			central.RecieveKey(e.KeyData, this);
+			controler.RecieveKey(e.KeyData, this);
 		}
 
 		//フォーム内表示調整ロジック

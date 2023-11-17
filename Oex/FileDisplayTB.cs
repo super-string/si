@@ -12,7 +12,7 @@ namespace Oex {
 			Type = _type;
 			ktb.Multiline = false;
 			ktb.BorderStyle = BorderStyle.None;
-			ktb.ExtIF.OverEscapeHandler += ExtIF_OverEscapeHandler;
+			ktb.ExpandEvent.OverEscapeHandler += ExpandEvent_OverEscapeHandler;
 			ktb.GotFocus += Ktb_GotFocusHandler;
 		}
 
@@ -20,7 +20,7 @@ namespace Oex {
 			ktb.Parent.Select();
 		}
 
-		private void ExtIF_OverEscapeHandler() {
+		private void ExpandEvent_OverEscapeHandler() {
 			ktb.Parent.Select();
 		}
 

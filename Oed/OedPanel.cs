@@ -2,28 +2,28 @@
 
 namespace Oed {
 	public class OedPanel :Control {
-		public ExternalIF ExtIF{ get; set; }
-		private OedControler central;
+		public OedEvent ExpandEvent{ get; set; }
+		private OedControler controler;
 
 		internal RichTextBox filePath;
 		internal KviTextBox textKtb;
 		internal KviTextBox commandKtb;
 
 		public OedPanel(Size _size, Point _location){
-			central = new OedControler();
-			ExtIF = new ExternalIF();
+			controler = new OedControler();
+			ExpandEvent = new OedEvent();
 
 			filePath = new RichTextBox();
 			filePath.Multiline = false;
 			filePath.ReadOnly = true;
 
 			textKtb = new KviTextBox();
-			textKtb.ExtIF.PressColonHandler += selectCommandKtb;
+			textKtb.ExpandEvent.PressColonHandler += selectCommandKtb;
 
 			commandKtb = new KviTextBox();
 			commandKtb.Multiline = false;
-			commandKtb.ExtIF.PressColonHandler += selectTextKtb;
-			commandKtb.ExtIF.PressEnterHandler += recieveCommand;
+			commandKtb.ExpandEvent.PressColonHandler += selectTextKtb;
+			commandKtb.ExpandEvent.PressEnterHandler += recieveCommand;
 
 			SetSize(_size);
 			SetLocation(_location);
@@ -37,7 +37,7 @@ namespace Oed {
 
 		protected override void OnKeyDown(KeyEventArgs e){
 			base.OnKeyDown(e);
-			central.RecieveKey(e.KeyData, this);
+			controler.RecieveKey(e.KeyData, this);
 		}
 
 		//フォーム内表示調整ロジック
@@ -91,7 +91,7 @@ namespace Oed {
 			textKtb.Select();
 		}
 		private void recieveCommand(){
-			central.command.RecieveCommand(this);
+			controler.command.RecieveCommand(this);
 		}
 		//イベントハンドラーーー
 	}

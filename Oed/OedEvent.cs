@@ -1,5 +1,5 @@
 ﻿namespace Oed {
-	public  class ExternalIF {
+	public  class OedEvent {
 		public event Action? OverEscapeHandler;
 		public event Action? FileCloseHandler;
 

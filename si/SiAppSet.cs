@@ -13,8 +13,8 @@ namespace si {
 			SetSize(_size);
 			SetLocation(_location);
 
-			oex.ExtIF.FileOpenHandler += StartOed;
-			oed.ExtIF.FileCloseHandler += EndOed;
+			oex.ExpandEvent.FileOpenHandler += StartOed;
+			oed.ExpandEvent.FileCloseHandler += EndOed;
 			this.Controls.Add(oex);
 
 			GotFocus += gotFocusHandler;

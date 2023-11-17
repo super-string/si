@@ -1,7 +1,7 @@
 ﻿using System.Runtime.CompilerServices;
 
 namespace kvi {
-	public class ExternalIF {
+	public class KviEvent {
 		public event Action? OverEscapeHandler;
 		public event Action? PressColonHandler;
 		public event Action? PressEnterHandler;

@@ -1,5 +1,5 @@
 ﻿namespace Oex {
-	public  class ExternalIF {
+	public  class OexEvent {
 		public event Action? OverEscapeHandler;
 		public event Action<string>? FileOpenHandler;
 
