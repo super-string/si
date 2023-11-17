@@ -2,12 +2,12 @@
 using kvi;
 
 namespace Oed {
-	internal class OedCentral {
-		internal OedModeCtrl Mode { get; private set; }
+	internal class OedControler {
+		internal OedMode Mode { get; private set; }
 		internal CommandLogic command;
 
-		internal OedCentral(){
-			Mode = new OedModeCtrl();
+		internal OedControler(){
+			Mode = new OedMode();
 			command = new CommandLogic();
 		}
 
@@ -27,9 +27,9 @@ namespace Oed {
 
 		private void event_Ctrl_w(OedPanel _target){
 			switch(Mode.Mode) {
-				case OedMode.Text:
+				case EditMode.Text:
 					break;
-				case OedMode.Command:
+				case EditMode.Command:
 					break;
 				default:
 					break;
@@ -37,9 +37,9 @@ namespace Oed {
 		}
 		private void event_Enter(OedPanel _target){
 			switch(Mode.Mode) {
-				case OedMode.Text:
+				case EditMode.Text:
 					break;
-				case OedMode.Command:
+				case EditMode.Command:
 					command.RecieveCommand(_target);
 					break;
 				default:

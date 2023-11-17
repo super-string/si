@@ -1,8 +1,8 @@
 ﻿
-namespace Oex {
-	internal class EditModeCtrl {
+namespace kvi {
+	internal class KviEditMode {
 		internal EditMode Mode { get; private set; }
-		public EditModeCtrl() {
+		public KviEditMode() {
 			Mode = EditMode.Normal;
 		}
 

@@ -90,6 +90,9 @@
 			}
 			catch(ArgumentException){
 			}
+			catch(UnauthorizedAccessException){
+				return false;
+			}
 			return true;
 		}
 		//情報更新IF---

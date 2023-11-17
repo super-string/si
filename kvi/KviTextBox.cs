@@ -1,7 +1,7 @@
 ﻿
 namespace kvi {
 	public class KviTextBox :RichTextBox {
-		private KviCentral central;
+		private KviControler central;
 		public  ExternalIF ExtIF{ get; private set; }
 		public void AddOverEscEvent(Action e){
 			ExtIF.OverEscapeHandler += e;
@@ -11,7 +11,7 @@ namespace kvi {
 		}
 
 		public KviTextBox() :base(){
-			central = new KviCentral();
+			central = new KviControler();
 			ExtIF = new ExternalIF();
 		}
 

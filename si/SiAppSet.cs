@@ -1,5 +1,6 @@
 ﻿using Oex;
 using Oed;
+using System.Configuration;
 
 namespace si {
 	internal class SiAppSet :Control {
@@ -17,27 +18,26 @@ namespace si {
 			this.Controls.Add(oex);
 
 			GotFocus += gotFocusHandler;
+			Resize += resizeHandler;
 		}
 
-		public Point GetLocation() { return Location; }
 		public void SetLocation(Point value) {
 			Location = value;
 			oex.SetLocation(value);
 			oed.SetLocation(value);
 		}
 
-		public Size GetSize() { return Size; }
 		public void SetSize(Size value) {
 			Size = value;
 			oex.SetSize(value);
-			oex.SetLocation(GetLocation());
+			oex.SetLocation(this.Location);
 			oed.SetSize(value);
-			oed.SetLocation(GetLocation());
+			oed.SetLocation(Location);
 		}
 
 		//アプリ開始・終了
 		private void StartOed(string _path){
-			oed.ReloadFile(_path);
+			oed.ReloadOed(_path);
 			this.Controls.Remove(oex);
 			this.Controls.Add(oed);
 			oed.Select();
@@ -49,13 +49,17 @@ namespace si {
 		}
 		//アプリ開始・終了ーーー
 
-		//フォーカス操作
+		//イベントハンドラ
 		private void gotFocusHandler(object? sender, EventArgs e){
 			if(this.Controls.Count == 0)
 				return;
 
 			this.Controls[0].Select();
 		}
-		//フォーカス操作ーーー
+		private void resizeHandler(object? sender, EventArgs e){
+			SetSize(this.Size);
+			SetLocation(this.Location);
+		}
+		//イベントハンドラーーー
 	}
 }

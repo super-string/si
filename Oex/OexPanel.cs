@@ -1,7 +1,7 @@
 ﻿namespace Oex {
 	public class OexPanel :Control {
 		internal int displayNum;
-		private OexCentral central;
+		private OexControler central;
 		public  ExternalIF ExtIF{ get; private set; }
 
 		RichTextBox currentPath;
@@ -24,7 +24,7 @@
 			this.SetLocation(_location);
 
 
-			central = new OexCentral(this);
+			central = new OexControler(this);
 			PointCursor(0);
 		}
 

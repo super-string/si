@@ -1,9 +1,9 @@
 ﻿namespace kvi {
-	internal class KviCentral {
-		internal EditModeCtrl Mode { get; private set; }
+	internal class KviControler {
+		internal KviEditMode Mode { get; private set; }
 
-		internal KviCentral(){
-			Mode = new EditModeCtrl();
+		internal KviControler(){
+			Mode = new KviEditMode();
 		}
 
 		internal bool RecieveKey(Keys _key, KviTextBox _target){

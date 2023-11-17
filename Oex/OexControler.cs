@@ -1,12 +1,12 @@
 ﻿
 namespace Oex {
-	internal class OexCentral {
-		internal EditModeCtrl Mode { get; private set; }
+	internal class OexControler {
+		internal OexMode Mode { get; private set; }
 		private DirectoryDisplayData displayData;
 
-		internal OexCentral(OexPanel _target){
+		internal OexControler(OexPanel _target){
 			displayData = new DirectoryDisplayData();
-			Mode = new EditModeCtrl();
+			Mode = new OexMode();
 
 			refreshDirectory_DisplayAndData(_target);
 		}
