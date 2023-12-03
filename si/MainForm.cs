@@ -6,6 +6,7 @@ namespace si {
 		public MainForm() {
 			InitializeComponent();
 			siAppSet = new SiAppSet(this.ClientSize, new Point(1, 1));
+			siAppSet.Dock = DockStyle.Fill;
 		}
 
 
@@ -14,8 +15,8 @@ namespace si {
 			this.Controls.Add(siAppSet);
 		}
 
-		private void MainForm_Resize(object sender, EventArgs e) {
-			siAppSet.Size = new Size(this.ClientSize.Width, this.ClientSize.Height);
+		private void MainForm_ResizeEnd(object sender, EventArgs e) {
+			//siAppSet.Size = new Size(this.ClientSize.Width, this.ClientSize.Height);
 		}
 	}
 }

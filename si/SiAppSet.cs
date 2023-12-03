@@ -1,6 +1,5 @@
 ﻿using Oex;
 using Oed;
-using System.Configuration;
 
 namespace si {
 	internal class SiAppSet :Control {
@@ -15,10 +14,13 @@ namespace si {
 
 			oex.ExpandEvent.FileOpenHandler += StartOed;
 			oed.ExpandEvent.FileCloseHandler += EndOed;
+			oex.Dock = DockStyle.Fill;
 			this.Controls.Add(oex);
 
 			GotFocus += gotFocusHandler;
-			Resize += resizeHandler;
+			//Resize += resizeHandler;
+
+			//SetStyle(ControlStyles.ResizeRedraw, true);
 		}
 
 		public void SetLocation(Point value) {
@@ -29,10 +31,8 @@ namespace si {
 
 		public void SetSize(Size value) {
 			Size = value;
-			oex.SetSize(value);
-			oex.SetLocation(this.Location);
-			oed.SetSize(value);
-			oed.SetLocation(Location);
+		//	oex.SetSize(value);
+		//	oed.SetSize(value);
 		}
 
 		//アプリ開始・終了
@@ -59,6 +59,7 @@ namespace si {
 		private void resizeHandler(object? sender, EventArgs e){
 			SetSize(this.Size);
 			SetLocation(this.Location);
+			//this.Refresh();
 		}
 		//イベントハンドラーーー
 	}
