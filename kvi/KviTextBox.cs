@@ -13,6 +13,7 @@ namespace kvi {
 		public KviTextBox() :base(){
 			controler = new KviControler();
 			ExpandEvent = new KviEvent();
+			SetStyle(ControlStyles.ResizeRedraw, true);
 		}
 
 		protected override void OnGotFocus(EventArgs e) {

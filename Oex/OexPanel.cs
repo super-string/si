@@ -14,10 +14,14 @@
 			currentPath.BackColor = Color.Red;
 			currentPath.Text = "dummy path";
 			currentPath.Multiline = false;
+			currentPath.Anchor = AnchorStyles.Left | AnchorStyles.Right;
 			this.Controls.Add(currentPath);
 
 			displayList = new List<FileDisplayTB>();
-			displayList.Add(new FileDisplayTB("", FileItemType.File));
+			var hogehoge = new FileDisplayTB("", FileItemType.File);
+			hogehoge.ktb.Anchor = AnchorStyles.Right | AnchorStyles.Left;
+			displayList.Add(hogehoge);
+
 			this.Controls.Add(displayList[0].ktb);
 
 			this.SetSize(_size);
@@ -26,6 +30,7 @@
 
 			controler = new OexControler(this);
 			PointCursor(0);
+			SetStyle(ControlStyles.ResizeRedraw, true);
 		}
 
 		protected override void OnKeyDown(KeyEventArgs e){
@@ -145,7 +150,8 @@
 					displayList[i].ktb.BackColor = Color.Aqua;
 				}
 				else{
-					displayList[i].ktb.BackColor = this.BackColor;
+					//displayList[i].ktb.BackColor = this.BackColor;
+					displayList[i].ktb.BackColor = Color.Yellow;
 				}
 			}
 			return true;
@@ -159,6 +165,7 @@
 		}
 		internal bool refreshItemDisplay(List<string> _items){
 			for(int i = 0; i < displayList.Count; i++){
+				displayList[i].ktb.Update();
 				if(_items.Count <= i){
 					displayList[i].ktb.Text = "";
 					break;

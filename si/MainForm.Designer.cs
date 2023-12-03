@@ -33,7 +33,7 @@
 			Name = "MainForm";
 			Text = "si";
 			Load += MainForm_Load;
-			Resize += MainForm_Resize;
+			ResizeEnd += MainForm_ResizeEnd;
 			ResumeLayout(false);
 		}
 
